@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace MateuszMesek\DocumentCatalogCategory\Command;
+namespace MateuszMesek\DocumentDataCatalogCategory\Command;
 
 use Magento\Catalog\Model\CategoryFactory;
 use Magento\Catalog\Model\ResourceModel\Category as CategoryResource;

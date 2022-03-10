@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace MateuszMesek\DocumentCatalogCategory\Data;
+namespace MateuszMesek\DocumentDataCatalogCategory\Data;
 
 use Magento\Catalog\Api\Data\CategoryInterface;
-use MateuszMesek\Document\Api\InputInterface;
+use MateuszMesek\DocumentDataApi\InputInterface;
 
 class Input implements InputInterface
 {
@@ -14,6 +14,11 @@ class Input implements InputInterface
     )
     {
         $this->category = $category;
+    }
+
+    public function getId(): string
+    {
+        return (string)$this->category->getId();
     }
 
     public function getCategory(): CategoryInterface

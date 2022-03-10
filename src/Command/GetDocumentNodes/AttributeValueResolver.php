@@ -1,12 +1,11 @@
 <?php declare(strict_types=1);
 
-namespace MateuszMesek\DocumentCatalogCategory\Command\GetDocumentNodes;
+namespace MateuszMesek\DocumentDataCatalogCategory\Command\GetDocumentNodes;
 
-use Magento\Catalog\Model\Category;
 use Magento\Eav\Api\Data\AttributeInterface;
-use MateuszMesek\Document\Api\InputInterface;
-use MateuszMesek\DocumentCatalogCategory\Data\Input;
-use MateuszMesek\DocumentEavApi\AttributeValueResolverInterface;
+use MateuszMesek\DocumentDataApi\InputInterface;
+use MateuszMesek\DocumentDataCatalogCategory\Data\Input;
+use MateuszMesek\DocumentDataEavApi\AttributeValueResolverInterface;
 
 class AttributeValueResolver implements AttributeValueResolverInterface
 {
@@ -17,10 +16,6 @@ class AttributeValueResolver implements AttributeValueResolverInterface
         }
 
         $category = $input->getCategory();
-
-        if (!$category instanceof Category) {
-            return null;
-        }
 
         $attributeCode = $attribute->getAttributeCode();
 

@@ -1,11 +1,11 @@
 <?php declare(strict_types=1);
 
-namespace MateuszMesek\DocumentCatalogCategory\Command;
+namespace MateuszMesek\DocumentDataCatalogCategory\Command;
 
 use Magento\Catalog\Api\Data\CategoryInterface;
 use Magento\Catalog\Model\Category;
-use MateuszMesek\Document\Api\Command\GetDocumentDataInterface;
-use MateuszMesek\DocumentCatalogCategory\Data\InputFactory;
+use MateuszMesek\DocumentDataApi\Command\GetDocumentDataInterface;
+use MateuszMesek\DocumentDataCatalogCategory\Data\InputFactory;
 
 class GetDocumentData
 {
@@ -21,7 +21,7 @@ class GetDocumentData
         $this->getDocumentData = $getDocumentData;
     }
 
-    public function execute(CategoryInterface $category)
+    public function execute(CategoryInterface $category): array
     {
         $input = $this->inputFactory->create(['category' => $category]);
 
