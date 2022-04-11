@@ -16,11 +16,17 @@ class Input implements InputInterface
         $this->category = $category;
     }
 
+    /**
+     * @return string
+     */
     public function getId(): string
     {
         return (string)$this->category->getId();
     }
 
+    /**
+     * @return \Magento\Catalog\Api\Data\CategoryInterface
+     */
     public function getCategory(): CategoryInterface
     {
         return $this->category;
