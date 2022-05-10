@@ -5,6 +5,7 @@ namespace MateuszMesek\DocumentDataCatalogCategory\Command;
 use Magento\Catalog\Api\Data\CategoryInterface;
 use Magento\Catalog\Model\Category;
 use MateuszMesek\DocumentDataApi\Command\GetDocumentDataInterface;
+use MateuszMesek\DocumentDataApi\Data\DocumentDataInterface;
 use MateuszMesek\DocumentDataCatalogCategory\Data\InputFactory;
 
 class GetDocumentData
@@ -21,7 +22,7 @@ class GetDocumentData
         $this->getDocumentData = $getDocumentData;
     }
 
-    public function execute(CategoryInterface $category): array
+    public function execute(CategoryInterface $category): ?DocumentDataInterface
     {
         $input = $this->inputFactory->create(['category' => $category]);
 

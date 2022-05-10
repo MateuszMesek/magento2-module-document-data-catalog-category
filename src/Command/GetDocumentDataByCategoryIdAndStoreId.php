@@ -4,6 +4,7 @@ namespace MateuszMesek\DocumentDataCatalogCategory\Command;
 
 use Magento\Catalog\Model\CategoryFactory;
 use Magento\Catalog\Model\ResourceModel\Category as CategoryResource;
+use MateuszMesek\DocumentDataApi\Data\DocumentDataInterface;
 
 class GetDocumentDataByCategoryIdAndStoreId
 {
@@ -22,7 +23,7 @@ class GetDocumentDataByCategoryIdAndStoreId
         $this->getDocumentData = $getDocumentData;
     }
 
-    public function execute(int $categoryId, int $storeId): array
+    public function execute(int $categoryId, int $storeId): ?DocumentDataInterface
     {
         $category = $this->categoryFactory->create();
         $category->setStoreId($storeId);
