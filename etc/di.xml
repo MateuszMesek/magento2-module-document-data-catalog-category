@@ -32,4 +32,17 @@
             <argument name="defaultResolver" xsi:type="object">MateuszMesek\DocumentDataCatalogCategory\AttributeValueResolver\DefaultResolver</argument>
         </arguments>
     </virtualType>
-    <virtualType name="MateuszMesek\DocumentDataCatalogCategory\AttributeReturnTypeResolver" type="MateuszMesek\DocumentDataEav\AttributeReturnTypeResolver\ByAttributeCode"/></config>
+    <virtualType name="MateuszMesek\DocumentDataCatalogCategory\AttributeReturnTypeResolver" type="MateuszMesek\DocumentDataEav\AttributeReturnTypeResolver\ByAttributeCode"/>
+    <type name="MateuszMesek\DocumentDataCatalogCategory\Command\GetDocumentData">
+        <plugin name="MateuszMesek_DocumentDataCatalogCategory" type="MateuszMesek\DocumentDataCatalogCategory\Plugin\ModifyRepository\OnGetDocumentData"/>
+    </type>
+    <type name="Magento\Catalog\Api\CategoryRepositoryInterface">
+        <plugin name="MateuszMesek_DocumentDataCatalogCategory" type="MateuszMesek\DocumentDataCatalogCategory\Plugin\ModifyRepository\OnCategoryRepository"/>
+    </type>
+    <type name="Magento\Catalog\Api\ProductRepositoryInterface">
+        <plugin name="MateuszMesek_DocumentDataCatalogCategory" type="MateuszMesek\DocumentDataCatalogCategory\Plugin\ModifyRepository\OnProductRepository"/>
+    </type>
+    <type name="MateuszMesek\DocumentDataApi\Command\GetDocumentNodeValueInterface">
+        <plugin name="MateuszMesek_DocumentDataCatalogCategory" type="MateuszMesek\DocumentDataCatalogCategory\Plugin\ModifyRepository\GetDocumentNodeValue"/>
+    </type>
+</config>
