@@ -3,23 +3,20 @@
 namespace MateuszMesek\DocumentDataCatalogCategory\Plugin\ModifyRepository;
 
 use Magento\Catalog\Api\Data\CategoryInterface;
-use MateuszMesek\DocumentDataApi\Data\DocumentDataInterface;
-use MateuszMesek\DocumentDataCatalogCategory\Command\GetDocumentData;
+use MateuszMesek\DocumentDataApi\Model\Data\DocumentDataInterface;
+use MateuszMesek\DocumentDataCatalogCategory\Model\Command\GetDocumentData;
 
 class OnGetDocumentData
 {
-    private State $state;
-
     public function __construct(
-        State $state
+        private readonly State $state
     )
     {
-        $this->state = $state;
     }
 
     public function aroundExecute(
-        GetDocumentData $getDocumentData,
-        callable $proceed,
+        GetDocumentData   $getDocumentData,
+        callable          $proceed,
         CategoryInterface $category
     ): ?DocumentDataInterface
     {

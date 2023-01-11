@@ -1,19 +1,16 @@
 <?php declare(strict_types=1);
 
-namespace MateuszMesek\DocumentDataCatalogCategory\Data;
+namespace MateuszMesek\DocumentDataCatalogCategory\Model\Data;
 
 use Magento\Catalog\Api\Data\CategoryInterface;
-use MateuszMesek\DocumentDataApi\InputInterface;
+use MateuszMesek\DocumentDataApi\Model\InputInterface;
 
 class Input implements InputInterface
 {
-    private CategoryInterface $category;
-
     public function __construct(
-        CategoryInterface $category
+        private readonly CategoryInterface $category
     )
     {
-        $this->category = $category;
     }
 
     /**

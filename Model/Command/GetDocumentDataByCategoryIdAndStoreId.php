@@ -1,26 +1,20 @@
 <?php declare(strict_types=1);
 
-namespace MateuszMesek\DocumentDataCatalogCategory\Command;
+namespace MateuszMesek\DocumentDataCatalogCategory\Model\Command;
 
 use Magento\Catalog\Model\CategoryFactory;
 use Magento\Catalog\Model\ResourceModel\Category as CategoryResource;
-use MateuszMesek\DocumentDataApi\Data\DocumentDataInterface;
+use MateuszMesek\DocumentDataApi\Model\Data\DocumentDataInterface;
+use MateuszMesek\DocumentDataCatalogCategory\Model\Command\GetDocumentData;
 
 class GetDocumentDataByCategoryIdAndStoreId
 {
-    private CategoryResource $categoryResource;
-    private CategoryFactory $categoryFactory;
-    private GetDocumentData $getDocumentData;
-
     public function __construct(
-        CategoryResource $categoryResource,
-        CategoryFactory  $categoryFactory,
-        GetDocumentData  $getDocumentData
+        private readonly CategoryResource $categoryResource,
+        private readonly CategoryFactory  $categoryFactory,
+        private readonly GetDocumentData  $getDocumentData
     )
     {
-        $this->categoryResource = $categoryResource;
-        $this->categoryFactory = $categoryFactory;
-        $this->getDocumentData = $getDocumentData;
     }
 
     public function execute(int $categoryId, int $storeId): ?DocumentDataInterface

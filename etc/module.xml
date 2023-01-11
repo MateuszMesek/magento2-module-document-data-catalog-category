@@ -3,7 +3,9 @@
     <module name="MateuszMesek_DocumentDataCatalogCategory">
         <sequence>
             <module name="Magento_Catalog"/>
+            <module name="Magento_Eav"/>
             <module name="MateuszMesek_DocumentData"/>
+            <module name="MateuszMesek_DocumentDataEav"/>
         </sequence>
     </module>
 </config>
