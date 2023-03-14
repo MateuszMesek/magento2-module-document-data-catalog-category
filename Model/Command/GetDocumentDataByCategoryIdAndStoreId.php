@@ -2,10 +2,10 @@
 
 namespace MateuszMesek\DocumentDataCatalogCategory\Model\Command;
 
+use Magento\Catalog\Model\Category;
 use Magento\Catalog\Model\CategoryFactory;
 use Magento\Catalog\Model\ResourceModel\Category as CategoryResource;
 use MateuszMesek\DocumentDataApi\Model\Data\DocumentDataInterface;
-use MateuszMesek\DocumentDataCatalogCategory\Model\Command\GetDocumentData;
 
 class GetDocumentDataByCategoryIdAndStoreId
 {
@@ -24,6 +24,22 @@ class GetDocumentDataByCategoryIdAndStoreId
 
         $this->categoryResource->load($category, $categoryId);
 
+        if (!$this->isCategoryAvailableInStore($category)) {
+            return null;
+        }
+
         return $this->getDocumentData->execute($category);
+    }
+
+    private function isCategoryAvailableInStore(Category $category): bool
+    {
+        $store = $category->getStore();
+
+        $rootCategoryId = (int)$store->getRootCategoryId();
+
+        $allowedCategoryIds = array_map('intval', $category->getParentIds());
+        $allowedCategoryIds[] = (int)$category->getId();
+
+        return in_array($rootCategoryId, $allowedCategoryIds, true);
     }
 }
